@@ -11,11 +11,11 @@ This script allows an unprivileged user on a vulnerable system to do the followi
 This repo contains 2 exploits:
 ### Exploit 1: 
 Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.bak. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
-![Demo-1](./Demo-1.png)
+<p align="left"><img src="./Demo-1.png" width="100%" height="90%"></p>
 
 ### Exploit 2:
 Injects and overwrites data in read-only SUID process memory that run as root.
-![Demo-2](./Demo-2.png)
+<p align="left"><img src="./Demo-2.png" width="100%" height="100%"></p>
 
 # Usage
 Clone this repository and change working direcotry
