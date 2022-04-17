@@ -1,12 +1,13 @@
+<p align="center"><img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/sudo-command-unsplash.jpg" width="79%" height="79%"></p>
+
 # Linux Privilege Escalation
 Bash script to check and exploit the CVE-2022-0847 Linux "Dirty Pipe" vulnerability
 
 ## About this Proof of Concept
 This script allows an unprivileged user on a vulnerable system to do the following:
-    - Modify/overwrite *read-only* files like /etc/passwd.
-    - Obtain an elevated shell
+- Modify/overwrite *read-only* files like /etc/passwd.
+- Obtain an elevated shell
 
-## Exploits
 This repo contains 2 exploits:
 ### Exploit 1: 
 Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.back. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
@@ -37,7 +38,6 @@ or
 ./exploit-2 /usr/bin/sudo
 ```
 
-
 # Technical Details
 This vulnerability resides in the *pipe* tool, which is used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
 
@@ -50,3 +50,7 @@ To ensure that your infrastructure is protected against this and similar threats
 - Apply all relevant security updates once they are available. To patch CVE-2022-0847, update your Linux systems to version 5.16.11, 5.15.25, and 5.10.102 or newer. 
 - Use a security solution that provides patch management and endpoint protection.
 - Use the latest Threat Intelligence information to stay aware of actual TTPs used by threat actors. 
+
+# Credits
+Credits to Max Kellermann <max.kellermann@ionos.com>
+Check out the official disclosure here: https://dirtypipe.cm4all.com/
