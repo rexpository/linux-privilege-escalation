@@ -11,9 +11,9 @@ This script allows an unprivileged user on a vulnerable system to do the followi
 
 Check if the current target system is vulnerable
 
-'''
+```
 ./check.sh
-...
+```
 
 
 
