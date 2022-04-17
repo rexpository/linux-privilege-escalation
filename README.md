@@ -11,8 +11,11 @@ This script allows an unprivileged user on a vulnerable system to do the followi
 This repo contains 2 exploits:
 ### Exploit 1: 
 Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.bak. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
+![Demo-1](./Demo-1.png)
+
 ### Exploit 2:
 Injects and overwrites data in read-only SUID process memory that run as root.
+![Demo-2](./Demo-2.png)
 
 # Usage
 Clone this repository and change working direcotry
@@ -41,8 +44,7 @@ or
 ```
 ./exploit-2 /usr/bin/sudo
 ```
-![Demo-1](./Demo-1.png)
-![Demo-2](./Demo-2.png)
+
 
 # Technical Details
 This vulnerability resides in the *pipe* tool used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
