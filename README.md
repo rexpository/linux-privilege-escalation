@@ -10,12 +10,16 @@ This script allows an unprivileged user on a vulnerable system to do the followi
 
 This repo contains 2 exploits:
 ### Exploit 1: 
-Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.back. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
+Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.bak. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
 ### Exploit 2:
 Injects and overwrites data in read-only SUID process memory that run as root.
 
 # Usage
-
+Clone this repository and change working direcotry
+```
+git clone https://github.com/rexpository/linux-privilege-escalation.git
+cd linux-privilege-escalation
+```
 Check if the current target system is vulnerable
 ```
 ./check.sh
@@ -37,9 +41,10 @@ or
 ```
 ./exploit-2 /usr/bin/sudo
 ```
+<p align="center"><img src="https://raw.githubusercontent.com/rexpository/linux-privilege-escalation/Demo.png" width="100%" height="100%"></p>
 
 # Technical Details
-This vulnerability resides in the *pipe* tool, which is used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
+This vulnerability resides in the *pipe* tool used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
 
 An unprivileged local user could exploit this vulnerability to overwrite supposedly read-only files in the Linux kernel and as such, escalate their privileges on the system. 
 
@@ -52,5 +57,5 @@ To ensure that your infrastructure is protected against this and similar threats
 - Use the latest Threat Intelligence information to stay aware of actual TTPs used by threat actors. 
 
 # Credits
-Credits to Max Kellermann <max.kellermann@ionos.com>
-Check out the official disclosure here: https://dirtypipe.cm4all.com/
+- Credits to Max Kellermann <max.kellermann@ionos.com>
+- Check out the official disclosure here: https://dirtypipe.cm4all.com/
