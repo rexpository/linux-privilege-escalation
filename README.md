@@ -41,7 +41,8 @@ or
 ```
 ./exploit-2 /usr/bin/sudo
 ```
-![Demo](./Demo.png)
+![Demo-1](./Demo-1.png)
+![Demo-2](./Demo-2.png)
 
 # Technical Details
 This vulnerability resides in the *pipe* tool used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
