@@ -1,7 +1,7 @@
 # Linux Privilege Escalation
-Bash script to check and exploit the CVE-2022-0847 "Dirty Pipe" vulnerability
+Bash script to check and exploit the CVE-2022-0847 Linux "Dirty Pipe" vulnerability
 
-# About this Proof of Concept
+## About this Proof of Concept
 This script allows an unprivileged user on a vulnerable system to do the following:
     - Modify/overwrite *read-only* files like /etc/passwd.
     - Obtain an elevated shell
@@ -9,9 +9,9 @@ This script allows an unprivileged user on a vulnerable system to do the followi
 ## Exploits
 This repo contains 2 exploits:
 ### Exploit 1: 
-    Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.back. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
+Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.back. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
 ### Exploit 2:
-    Injects and overwrites data in read-only SUID process memory that run as root.
+Injects and overwrites data in read-only SUID process memory that run as root.
 
 # Usage
 
@@ -40,7 +40,9 @@ or
 
 # Technical Details
 This vulnerability resides in the *pipe* tool, which is used for unidirectional communication between processes, hence the name *"Dirty Pipe"*. 
+
 An unprivileged local user could exploit this vulnerability to overwrite supposedly read-only files in the Linux kernel and as such, escalate their privileges on the system. 
+
 This vulnerabilty occurs due to the usage of partially uninitialized memory of the *pipe* buffer structure during its construction. A lack of zero initialization of the new structures's member results in a stale value of *flags*, which can be abused by anattacker to gain write acces to pages in the cache even if they originally were marked with a *read-only* attribute. 
 
 # Mitigations
