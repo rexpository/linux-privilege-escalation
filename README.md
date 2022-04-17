@@ -3,19 +3,39 @@ Bash script to check and exploit the CVE-2022-0847 "Dirty Pipe" vulnerability
 
 # About this Proof of Concept
 This script allows an unprivileged user on a vulnerable system to do the following:
-- Modify/overwrite *read-only* files like /etc/passwd.
-- Obtain an elevated shell
+    - Modify/overwrite *read-only* files like /etc/passwd.
+    - Obtain an elevated shell
 
+## Exploits
+This repo contains 2 exploits:
+### Exploit 1: 
+    Replaces the root password with the password "piped" and backups the original /etc/passwd file under /tmp/passwd.back. Then, the exploit provides you with access to an elevated root shell and restores the original passwd file when you exit the shell.
+### Exploit 2:
+    Injects and overwrites data in read-only SUID process memory that run as root.
 
 # Usage
 
 Check if the current target system is vulnerable
-
 ```
 ./check.sh
 ```
-
-
+Install GCC to compile the exploit
+```
+sudo apt-get install gcc
+```
+Compile and run the bashscript to automate the compilation of both exploits
+```
+chmod +x compile.sh
+./compile.sh
+```
+Run your desired exploit binary
+```
+./exploit-1
+```
+or
+```
+./exploit-2 /usr/bin/sudo
+```
 
 
 # Technical Details
