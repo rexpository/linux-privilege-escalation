@@ -18,7 +18,7 @@ Injects and overwrites data in read-only SUID process memory that run as root.
 <p align="left"><img src="./Demo-2.png" width="100%" height="100%"></p>
 
 # Usage
-Clone this repository and change working direcotry
+Clone this repository and change working directory
 ```
 git clone https://github.com/rexpository/linux-privilege-escalation.git
 cd linux-privilege-escalation
