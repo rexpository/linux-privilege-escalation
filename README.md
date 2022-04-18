@@ -1,5 +1,6 @@
-# Linux Privilege Escalation
 <p align="left"><img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/sudo-command-unsplash.jpg" width="60%" height="60%"></p>
+
+# Linux Privilege Escalation
 Bash script to check and exploit the CVE-2022-0847 Linux "Dirty Pipe" vulnerability
 
 
